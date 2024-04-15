@@ -1,48 +1,42 @@
 <template>
-    <div class="max-w-7xl mx-auto grid grid-cols-2 gap-4">
-        <div class="main-left">
-            <div class="p-12 bg-white border border-gray-200 rounded-lg">
-                <h1 class="mb-6 text-2xl">Edit profile</h1>
-
-                <p class="mb-6 text-gray-500">
-                    Lorem ipsum dolor sit mate. Lorem ipsum dolor sit mate. Lorem ipsum dolor sit mate.
-                    Lorem ipsum dolor sit mate. Lorem ipsum dolor sit mate. Lorem ipsum dolor sit mate.
-                </p>
-
-                <RouterLink to="/profile/edit/password" class="underline">Edit password</RouterLink>
-            </div>
-        </div>
-
-        <div class="main-right">
-            <div class="p-12 bg-white border border-gray-200 rounded-lg">
+    <div class="bg-gray-200 h-[100vh]">
+        <div class="pt-8 flex justify-center mx-auto w-1/3">
+            <div class="p-12 bg-white rounded-lg w-full shadow-lg">
                 <form class="space-y-6" v-on:submit.prevent="submitForm">
                     <div>
-                        <label>First Name</label><br>
+                        <label class="text-xl font-bold">First Name</label><br>
                         <input type="text" v-model="user.name" placeholder="Your first name" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
                     </div>
 
                     <div>
-                        <label>Last Name</label><br>
+                        <label class="text-xl font-bold">Last Name</label><br>
                         <input type="text" v-model="user.last_name" placeholder="Your last name" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
                     </div>
 
                     <div>
-                        <label>E-mail</label><br>
+                        <label class="text-xl font-bold">E-mail</label><br>
                         <input type="email" v-model="user.email" placeholder="Your e-mail address" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
                     </div>
 
-                    <template v-if="userStore.user.level < 2">
+                    <template v-if="userStore.user.level < 2 && user.level < 3">
                         <div>
-                            <label>Employee Title</label><br>
+                            <label class="text-xl font-bold">Employee Title</label><br>
                             <input type="text" v-model="user.employee_title" placeholder="Employee Title" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
                         </div>
 
-                        <div>Level: {{ user.level }}</div>
-                            <select v-model="user.level">
+                        <div>
+                            <template v-if="user.level === 2">
+                                <label class="text-xl font-bold">Level: Staff</label><br>
+                            </template>
+                            <template v-if="user.level === 1">
+                                <label class="text-xl font-bold">Level: Manager</label><br>
+                            </template>
+                            <select v-model="form.level" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
                             <option disabled value="">Please select one</option>
-                            <option>1</option>
-                            <option>2</option>
-                        </select>
+                                <option value="1">Manager</option>
+                                <option value="2">Staff</option>
+                            </select>
+                        </div>
                     </template>
 
                     <template v-if="errors.length > 0">
@@ -52,7 +46,7 @@
                     </template>
 
                     <div>
-                        <button class="py-4 px-6 bg-purple-600 text-white rounded-lg">Save changes</button>
+                        <button class="py-4 px-6 bg-orange-300 text-white font-bold rounded-lg">Save Changes</button>
                     </div>
                 </form>
                 

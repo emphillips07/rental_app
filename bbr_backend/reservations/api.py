@@ -6,9 +6,9 @@ from users.models import User
 from users.serializers import UserSerializer
 from rentals.models import Rental
 from rentals.serializers import RentalSerializer
-from .models import Reservation
+from .models import Reservation, disabledDates
 from .serializers import ReservationSerializer
-from .forms import ReservationForm
+from .forms import ReservationForm, EditForm
 
 
 @api_view(['GET'])
@@ -22,7 +22,7 @@ def reservations(request):
 
 @api_view(['GET'])
 @permission_classes([AllowAny])
-def current(request):
+def reservations_all(request):
     rentals = Rental.objects.all()
     reservations = Reservation.objects.all()
 
@@ -32,6 +32,17 @@ def current(request):
     return JsonResponse({
         'rentals': rental_serializer.data,
         'reservations': reservation_serializer.data,
+    }, safe=False)
+
+@api_view(['GET'])
+@permission_classes([AllowAny])
+def current(request, pk):
+    reservation = Reservation.objects.get(pk=pk)
+
+    reservation_serializer = ReservationSerializer(reservation)
+
+    return JsonResponse({
+        'reservation': reservation_serializer.data,
     }, safe=False)
 
 @api_view(['GET'])
@@ -68,10 +79,10 @@ def reservation_create(request):
     
 @api_view(['DELETE'])
 def reservation_delete(request, pk):
-    reservation = reservation.objects.get(pk=pk)
+    reservation = Reservation.objects.get(pk=pk)
     reservation.delete()
 
-    return JsonResponse({'message': 'reservation deleted'})
+    return JsonResponse({'message': 'reservation cancelled'})
 
 @api_view(['POST'])
 def changeStatus(request, pk):
@@ -86,3 +97,16 @@ def changeStatus(request, pk):
     reservation.save()
 
     return JsonResponse({'message': 'Success'})
+
+@api_view(['POST'])
+def reservation_edit(request, pk):
+    reservation = Reservation.objects.get(pk=pk)
+    
+    form = EditForm(request.POST, request.FILES, instance=reservation)
+
+    if form.is_valid():
+        form.save()
+
+    serializer = ReservationSerializer(reservation)
+
+    return JsonResponse({'message': 'information updated', 'reservation': serializer.data})

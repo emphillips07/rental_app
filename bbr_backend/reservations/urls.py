@@ -2,11 +2,12 @@ from django.urls import path
 
 from . import api
 
-
 urlpatterns = [
     path("", api.reservations, name='reservations'),
-    path("current", api.current, name='current'),
-    path('<uuid:pk>/', api.changeStatus, name='changeStatus'),
+    path("list/", api.reservations_all, name='reservations_all'),
+    path("<uuid:pk>/", api.current, name='current'),
+    path('<uuid:pk>/status', api.changeStatus, name='changeStatus'),
     path("create/", api.reservation_create, name='reservation_create'),
-    path("<uuid:pk>/delete/", api.reservation_delete, name='reservation_delete'),
+    path("<uuid:pk>/edit/", api.reservation_edit, name='reservation_edit'),
+    path("<uuid:pk>/delete/", api.reservation_delete, name='reservation_delete'), 
 ]

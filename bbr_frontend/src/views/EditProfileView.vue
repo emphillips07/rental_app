@@ -1,46 +1,35 @@
 <template>
-    <div class="max-w-7xl mx-auto grid grid-cols-2 gap-4">
-        <div class="main-left">
-            <div class="p-12 bg-white border border-gray-200 rounded-lg">
-                <h1 class="mb-6 text-2xl">Edit profile</h1>
-
-                <p class="mb-6 text-gray-500">
-                    Lorem ipsum dolor sit mate. Lorem ipsum dolor sit mate. Lorem ipsum dolor sit mate.
-                    Lorem ipsum dolor sit mate. Lorem ipsum dolor sit mate. Lorem ipsum dolor sit mate.
-                </p>
-
-                <RouterLink to="/profile/edit/password" class="underline">Edit password</RouterLink>
-            </div>
-        </div>
-
-        <div class="main-right">
-            <div class="p-12 bg-white border border-gray-200 rounded-lg">
+    <div class="bg-gray-200 h-[100vh]">
+        <div class="pt-8 flex justify-center mx-auto w-1/3">
+            <div class="p-12 bg-white rounded-lg w-full shadow-lg">
                 <form class="space-y-6" v-on:submit.prevent="submitForm">
-                    <div>
-                        <label>First Name</label><br>
-                        <input type="text" v-model="form.name" placeholder="Your first name" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
-                    </div>
+                <div>
+                    <label class="text-xl font-bold">First Name</label><br>
+                    <input type="text" v-model="form.name" placeholder="Your first name" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
+                </div>
 
-                    <div>
-                        <label>Last Name</label><br>
-                        <input type="text" v-model="form.last_name" placeholder="Your last name" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
-                    </div>
+                <div>
+                    <label class="text-xl font-bold">Last Name</label><br>
+                    <input type="text" v-model="form.last_name" placeholder="Your last name" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
+                </div>
 
-                    <div>
-                        <label>E-mail</label><br>
-                        <input type="email" v-model="form.email" placeholder="Your e-mail address" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
-                    </div>
+                <div>
+                    <label class="text-xl font-bold">Email Address</label><br>
+                    <input type="email" v-model="form.email" placeholder="Your e-mail address" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
+                </div>
 
-                    <template v-if="errors.length > 0">
-                        <div class="bg-red-300 text-white rounded-lg p-6">
-                            <p v-for="error in errors" v-bind:key="error">{{ error }}</p>
-                        </div>
-                    </template>
+                <p><RouterLink to="/profile/edit/password" class="font-bold underline">Click Here</RouterLink> to change your password.</p>
 
-                    <div>
-                        <button class="py-4 px-6 bg-purple-600 text-white rounded-lg">Save changes</button>
+                <template v-if="errors.length > 0">
+                    <div class="bg-red-300 text-white rounded-lg p-6">
+                        <p v-for="error in errors" v-bind:key="error">{{ error }}</p>
                     </div>
-                </form>
+                </template>
+
+                <div>
+                    <button class="py-4 px-6 bg-orange-300 text-white font-bold rounded-lg">Save Changes</button>
+                </div>
+        </form>
             </div>
         </div>
     </div>

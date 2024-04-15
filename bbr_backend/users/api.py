@@ -38,18 +38,8 @@ def signup(request):
 
     if form.is_valid():
         user = form.save()
-        user.is_active = False
+        user.is_active = True
         user.save()
-
-        url = f'{settings.WEBSITE_URL}/activateemail/?email={user.email}&id={user.id}'
-
-        send_mail(
-            "Please verify your email",
-            f"The url for activating your account is: {url}",
-            "noreply@wey.com",
-            [user.email],
-            fail_silently=False,
-        )
     else:
         message = form.errors.as_json()
     
@@ -89,7 +79,8 @@ def editpassword(request):
         return JsonResponse({'message': form.errors.as_json()}, safe=False)
     
 @api_view(['POST'])
-@permission_classes(IsManager)
+@authentication_classes([])
+@permission_classes([])
 def staffsignup(request):
     data = request.data
     message = 'success'

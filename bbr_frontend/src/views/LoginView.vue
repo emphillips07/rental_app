@@ -1,30 +1,15 @@
 <template>
-    <div class="max-w-7xl mx-auto grid grid-cols-2 gap-4">
-        <div class="main-left">
-            <div class="p-12 bg-white border border-gray-200 rounded-lg">
-                <h1 class="mb-6 text-2xl">Log in</h1>
-
-                <p class="mb-6 text-gray-500">
-                    Lorem ipsum dolor sit mate. Lorem ipsum dolor sit mate. Lorem ipsum dolor sit mate.
-                    Lorem ipsum dolor sit mate. Lorem ipsum dolor sit mate. Lorem ipsum dolor sit mate.
-                </p>
-
-                <p class="font-bold">
-                    Don't have an account? <RouterLink :to="{'name': 'signup'}" class="underline">Click here</RouterLink> to create one!
-                </p>
-            </div>
-        </div>
-
-        <div class="main-right">
-            <div class="p-12 bg-white border border-gray-200 rounded-lg">
+    <div class="bg-gray-200 h-[100vh]">
+        <div class="pt-8 flex justify-center mx-auto w-1/3">
+            <div class="p-12 bg-white rounded-lg w-full shadow-lg">
                 <form class="space-y-6" v-on:submit.prevent="submitForm">
                     <div>
-                        <label>E-mail</label><br>
-                        <input type="email" v-model="form.email" placeholder="Your e-mail address" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
+                        <label class="text-xl font-bold">Email</label><br>
+                        <input type="email" v-model="form.email" placeholder="Your email address" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
                     </div>
 
                     <div>
-                        <label>Password</label><br>
+                        <label class="text-xl font-bold">Password</label><br>
                         <input type="password" v-model="form.password" placeholder="Your password" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
                     </div>
 
@@ -35,8 +20,11 @@
                     </template>
 
                     <div>
-                        <button class="py-4 px-6 bg-purple-600 text-white rounded-lg">Log in</button>
+                        <button class="py-4 px-6 bg-orange-300 text-white font-bold rounded-lg">Log In</button>
                     </div>
+                    <p class="">
+                        Don't have an account? <RouterLink :to="{'name': 'signup'}" class="underline font-bold">Click here</RouterLink> to create one.
+                    </p>
                 </form>
             </div>
         </div>
@@ -70,7 +58,7 @@ export default {
             this.errors = []
 
             if (this.form.email === '') {
-                this.errors.push('Your e-mail is missing')
+                this.errors.push('Your email is missing')
             }
 
             if (this.form.password === '') {

@@ -17,6 +17,9 @@ class ReservationSerializer(serializers.ModelSerializer):
             "arrival",
             "departure",
             "isCurrent",
-            "get_status",
             "checkedIn",
+            "isCancelled",
+            "get_status",
+            "get_total",
+            "get_dates",
         )

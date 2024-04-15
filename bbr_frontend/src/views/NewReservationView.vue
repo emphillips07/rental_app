@@ -1,30 +1,33 @@
 <template>
-    <div class="max-w-7xl mx-auto grid grid-cols-2 gap-4">
-        <div class="main-right">
-            <div class="p-12 bg-white border border-gray-200 rounded-lg">
+    <div class="bg-gray-200 h-[100vh]">
+        <div class="pt-8 flex justify-center mx-auto w-1/3">
+            <div class="p-12 bg-white rounded-lg w-full shadow-lg">
+            <div class="">
                 <form class="space-y-6" v-on:submit.prevent="submitForm">
                     <div v-if="userStore.user.level > 2">
-                        <p>userStore.user.email</p>
+                        <p>{{ userStore.user.email }}</p>
                     </div>
                     <div v-else>
-                        <label>Guest Email</label><br>
+                        <label class="text-xl font-bold">Guest Email</label><br>
                         <input type="email" v-model="form.email" placeholder="" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
                     </div>
 
                     <div>
-                        <label>Arrival Date</label><br>
-                        <input type="date" v-model="form.arrival" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
-                    </div>
-
-                    <div>
-                        <label>Departure Date</label><br>
-                        <input type="date" v-model="form.departure" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
-                    </div>
-
-                    <div>
-                        <select v-model="form.location">
-                        <option v-for="rental in rentals" v-bind:value="rental.id">{{ rental.name }}</option>
+                        <label class="text-xl font-bold">Location</label><br>
+                        <select v-model="form.location" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
+                            <option disabled value="">Please Select Location</option>
+                            <option  v-for="rental in rentals" v-bind:value="rental.id">{{ rental.name }}</option>
                         </select>
+                    </div>
+                    
+                    <div>
+                        <label class="text-xl font-bold">Arrival Date</label><br>
+                        <VueDatePicker v-model="form.arrival" :format="format" :min-date="new Date()"/>
+                    </div>
+
+                    <div>
+                        <label class="text-xl font-bold">Depature Date</label><br>
+                        <VueDatePicker v-model="form.departure" :format="format"/>
                     </div>
 
                     <template v-if="errors.length > 0">
@@ -34,63 +37,77 @@
                     </template>
 
                     <div>
-                        <button class="py-4 px-6 bg-purple-600 text-white rounded-lg">Reserve</button>
+                        <button class="py-4 px-6 bg-orange-300 text-white font-bold rounded-lg">Reserve</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+</div>
 </template>
 
 <script>
 import axios from 'axios'
 import { useUserStore } from '@/stores/user'
 import { useToastStore } from '@/stores/toast'
+import { ref } from 'vue';
+import VueDatePicker from '@vuepic/vue-datepicker'
+import '@vuepic/vue-datepicker/dist/main.css'
 
 export default {
+    components: {
+        VueDatePicker
+    },
+
     setup() {
         const userStore = useUserStore()
-        const toastStore = useToastStore()
-
+        const toastStore = useToastStore() 
+        const date = ref();
+        const format = (date) => {
+            const day = date.getDate();
+            const month = date.getMonth() + 1;
+            const year = date.getFullYear();
+        
+            return `${month}/${day}/${year}`;
+        }
+        
         return {
             userStore,
-            toastStore
+            toastStore,
+            date,
+            format,
         }
     },
 
     data() {
-        return {
-            rentals: [],
-            form: {
-                email: '',
-                arrival: '',
-                departure: '',
-                location: '',
-            },
-            errors: [],
-        }
-    },
+            return {
+                rentals: [],
+                reservations: [],
+                form: {
+                    email: '',
+                    arrival: '',
+                    departure: '',
+                    location: '',
+                },
+                errors: [],
+            }
+        },
 
     mounted() {
-        this.getRentals()
+        this.getReservations()
     },
 
     methods: {
-        getRentals() {
+        getReservations() {
             axios
-                .get('/api/rentals/')
+                .get('/api/reservations/list/')
                 .then(response => {
-                    console.log('data', response.data)
-
-                    this.rentals = response.data
+                    this.rentals = response.data.rentals
+                    this.reservations = response.data.reservations
                 })
                 .catch(error => {
                     console.log('error', error)
                 })
-        },
-
-        disableDates(date) {
-            
         },
 
         submitForm() {
@@ -118,7 +135,6 @@ export default {
                     .then(response => {
                         if (response.data.message === 'success') {
                             this.toastStore.showToast(5000, 'Success', 'bg-emerald-500')
-
                             this.form.email = ''
                             this.form.arrival = ''
                             this.form.departure = ''
@@ -134,6 +150,7 @@ export default {
                     })
                     .catch(error => {
                         console.log('error', error)
+                        console.log(this.arrival)
                     })
             }
         }

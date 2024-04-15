@@ -1,15 +1,8 @@
 from rest_framework import serializers
 
-from .models import Rental, RoomPictures
+from .models import Rental
 
-class RoomPicturesSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = RoomPictures
-        fields = ('id', 'get_image',)
-
-class RentalSerializer(serializers.ModelSerializer):
-    roomPics = RoomPicturesSerializer(read_only=True, many=True)
-    
+class RentalSerializer(serializers.ModelSerializer):   
     class Meta:
         model = Rental
         fields = (
@@ -18,8 +11,16 @@ class RentalSerializer(serializers.ModelSerializer):
             "address",
             "description",
             "price",
-            "isOccupied",
             'profilePic',
-            'roomPics',
             "get_profilePic",
+            'roomPicOne',
+            "get_roomPicOne",
+            'roomPicTwo',
+            "get_roomPicTwo",
+            'roomPicThree',
+            "get_roomPicThree",
+            'roomPicFour',
+            "get_roomPicFour",
+            'roomPicFive',
+            "get_roomPicFive",
         )

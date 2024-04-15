@@ -1,36 +1,76 @@
 <template>
-    <div class="max-w-7xl mx-auto grid grid-cols-4 gap-4">
-        <div class="main-center col-span-3 space-y-4">
-            <div 
-                class="p-4 bg-white border border-gray-200 rounded-lg"
-                v-for="user in users"
-                v-bind:key="user.id"
-            >
-                <UserItem v-bind:user="user" />
-            </div>
-           
-        </div>
+    <div class="inset-0 p-10 bg-gray-200 h-[100vh] z-0">
+        <div class="mx-auto">
+            <div class="px-12 pt-2 pb-10 bg-white rounded-lg w-full shadow-lg">
+                <template v-if="userStore.user.level < 2">
+                    <div class="flex justify-center pb-2">
+                        <div class="">
+                            <button class="py-4 px-6 bg-orange-300 text-white font-bold rounded-lg">
+                                <RouterLink to="/stafflist">Staff List</RouterLink>
+                            </button>
+                        </div>
+                    </div>
+                </template>
+                <EasyDataTable :headers="headers" :items="users">
+                    <template #item-name="{ name, id }">
+                        <RouterLink :to="{name: 'userdetails', params:{'id': id}}">{{ name }}</RouterLink>
+                    </template>
+                    <template #item-operation="{ id }">
+                        <div class="flex justify-end">
+                            <RouterLink :to="{name: 'edituserdetails', params:{'id': id}}">    
+                                <img
+                                    src="../assets/edit.png"
+                                    class="w-10"
+                                />
+                            </RouterLink>                           
+                        </div>
+                    </template>
+                </EasyDataTable>
+            </div>            
+        </div> 
     </div>
 </template>
 
 <script>
 import axios from 'axios'
-import UserItem from '../components/UserItem.vue'
+import { RouterLink } from 'vue-router'
+import { useUserStore } from '@/stores/user'
 
 export default {
     name: 'UserListView',
 
-    components: {
-        UserItem
+    setup() {
+        const userStore = useUserStore()
+
+        return {
+            userStore,
+        }
     },
 
     data() {
         return {
-            users: []
+            user: {}
         }
     },
 
-    mounted() {
+    components: {
+        EasyDataTable: window['vue3-easy-data-table'],
+        RouterLink
+    },
+
+    data() {
+        return {
+            users: [],
+            headers: [
+                { text: "First Name", value: "name"},
+                { text: "Last Name", value: "last_name"},
+                { text: "Email", value: "email"},
+                { text: "", value: "operation"},
+            ],
+        }
+    },
+
+    beforeMount() {
         this.getUsers()
     },
 
@@ -39,9 +79,8 @@ export default {
             axios
                 .get('/api/userlist/')
                 .then(response => {
-                    console.log('data', response.data)
-
-                    this.users = response.data
+                    this.users = response.data.filter(data => data.level === 3)
+                    console.log('data', this.users)
                 })
                 .catch(error => {
                     console.log('error', error)

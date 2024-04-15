@@ -9,12 +9,17 @@ import RentalListView from '../views/RentalListView.vue'
 import RentalDetailsView from '../views/RentalDetailsView.vue'
 import StaffSignupView from '../views/StaffSignupView.vue'
 import UserListView from '../views/UserListView.vue'
+import StaffListView from '../views/StaffListView.vue'
 import UserDetailsView from '../views/UserDetailsView.vue'
 import EditUserDetailsView from '../views/EditUserDetailsView.vue'
 import RentalCreateView from '../views/RentalCreateView.vue'
 import EditRentalView from '../views/EditRentalView.vue'
 import ReservationsView from '../views/ReservationsView.vue'
 import NewReservationView from '../views/NewReservationView.vue'
+import MyReservationsView from '../views/MyReservationsView.vue'
+import ReservationsListView from '../views/ReservationsListView.vue'
+import EditReservationView from '../views/EditReservationView.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -70,6 +75,11 @@ const router = createRouter({
         component: UserListView
       },
       {
+        path: '/stafflist',
+        name: 'stafflist',
+        component: StaffListView
+      },
+      {
         path: '/userlist/:id',
         name: 'userdetails',
         component: UserDetailsView
@@ -90,14 +100,29 @@ const router = createRouter({
         component: EditRentalView
       },
       {
-        path: '/reservations/current',
-        name: 'current',
+        path: '/reservations/inhouse',
+        name: 'inhouse',
         component: ReservationsView
       },
       {
         path: '/reservations/create',
         name: 'reservation_create',
         component: NewReservationView
+      },
+      {
+        path: '/reservations/',
+        name: 'reservations',
+        component: MyReservationsView
+      },
+      {
+        path: '/reservations/list',
+        name: 'reservations_all',
+        component: ReservationsListView
+      },
+      {
+        path: '/reservations/:id/edit',
+        name: 'reservations_edit',
+        component: EditReservationView
       },
   ]
 })

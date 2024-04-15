@@ -1,26 +1,26 @@
 <template>
-    <div class="max-w-7xl mx-auto grid grid-cols-2 gap-4">
-        <div class="main-right">
-            <div class="p-12 bg-white border border-gray-200 rounded-lg">
+    <div class="bg-gray-200 h-[100vh]">
+        <div class="pt-8 flex justify-center mx-auto w-1/3">
+            <div class="p-12 bg-white rounded-lg w-full shadow-lg">
                 <form class="space-y-6" v-on:submit.prevent="submitForm">
                     <div>
-                        <label>Name</label><br>
+                        <label class="text-xl font-bold">Name</label><br>
                         <input type="text" v-model="form.name" placeholder="name" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
                     </div>
 
                     <div>
-                        <label>Address</label><br>
+                        <label class="text-xl font-bold">Address</label><br>
                         <input type="text" v-model="form.address" placeholder="address" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
                     </div>
 
                     <div>
-                        <label>Description</label><br>
+                        <label class="text-xl font-bold">Description</label><br>
                         <textarea v-model="form.description" placeholder="add a desription about the rental" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg"></textarea>
                     </div>
 
                     <div>
-                        <label>Price</label><br>
-                        <p>$</p><input type="number" v-model="form.price" placeholder="0.00" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
+                        <label class="text-xl font-bold">Price</label><br>
+                        <input type="number" v-model="form.price" placeholder="0.00" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
                     </div>
 
                     <template v-if="errors.length > 0">
@@ -30,7 +30,7 @@
                     </template>
 
                     <div>
-                        <button class="py-4 px-6 bg-purple-600 text-white rounded-lg">Create Rental</button>
+                        <button class="py-4 px-6 bg-orange-300 text-white font-bold rounded-lg">Create Rental</button>
                     </div>
                 </form>
             </div>
