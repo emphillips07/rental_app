@@ -1,37 +1,16 @@
 <template>
-    <div class="inset-0 px-12 bg-gray-200 h-[100vh] z-0">
-        <div class="flex justify-center">
-            <p class="text-center py-6 text-6xl underline font-bold">{{ rental.name }}</p>
-        </div>
-        <div class="grid grid-cols-5 gap-4">
-            <div class="col-span-1">
-                <div class="">
-                    <p class="text-center text-4xl py-3">${{ rental.price }} Per Night</p>
-                    <p class="dynamic-text-size">{{ rental.address }}</p>
-                    <p class="dynamic-text-size">Charleston, SC, 29405</p>
-                    <p class="text-2xl py-3">{{ rental.description }}</p>
-                    <div v-if="userStore.user.isAuthenticated && userStore.user.id && userStore.user.level < 2" class="flex justify-center">
+    <div class="inset-0 px-12 bg-gray-200 h-full z-0">
+        <div v-if="userStore.user.isAuthenticated && userStore.user.id && userStore.user.level < 2" class="pt-8 fixed">
                         <button class="py-4 px-6 bg-orange-300 font-bold text-white rounded-lg">
                             <RouterLink :to="{name: 'rental_edit', params:{'id': rental.id}}">Edit</RouterLink>
                         </button>
                     </div>
-                    <template v-for="reservation in reservations" v-bind:key="reservation.id">
-                        {{ getDates(change(reservation.arrival), change(reservation.departure)) }}
-
-                    </template>
-                </div>    
-            </div>
-            <div class="col-span-3">
-                <div class="grid grid-cols-3 gap-3">
-                    <img v-bind:src="rental.get_profilePic" class="h-full w-full rounded-lg shadow-lg"/>
-                    <img v-bind:src="rental.get_roomPicOne" class="h-full w-full rounded-lg shadow-lg"/>
-                    <img v-bind:src="rental.get_roomPicTwo" class="h-full w-full rounded-lg shadow-lg"/>
-                    <img v-bind:src="rental.get_roomPicThree" class="h-full w-full rounded-lg shadow-lg"/>
-                    <img v-bind:src="rental.get_roomPicFour" class="h-full w-full rounded-lg shadow-lg"/>
-                    <img v-bind:src="rental.get_roomPicFive" class="h-full w-full rounded-lg shadow-lg"/>                
-                </div>
-            </div>
-            <div class="col-span-1">
+        <div class="flex justify-center">
+            <p class="text-center py-6 text-6xl underline font-bold">{{ rental.name }}</p>
+        </div>
+        <div class="grid grid-cols-7 gap-4">
+            <div class="fixed justify-center col-span-1">
+                
                 <div class="p-8 bg-white rounded-lg shadow-lg">
                     <div class="">
                         <template v-if="userStore.user.isAuthenticated && userStore.user.id  && userStore.user.level > 2">
@@ -42,7 +21,7 @@
                             </div>
                             <div>
                                 <label class="text-xl font-bold">Depature Date</label><br>
-                                <VueDatePicker v-model="form.departure" :format="format" :min-date="new Date()" :disabled-dates="disabledDates"/>
+                                <VueDatePicker v-model="form.departure" :format="format" :min-date="form.arrival" :disabled-dates="disabledDates"/>
                             </div>
                             <select v-model="form.location" class="border border-gray-200">
                                 <option disabled value="">Please Confirm Location</option>
@@ -71,12 +50,15 @@
                                 </div>
                                 <div>
                                     <label class="text-xl font-bold">Depature Date</label><br>
-                                    <VueDatePicker v-model="form.departure" :format="format" :min-date="new Date()" :disabled-dates="disabledDates"/>
+                                    <VueDatePicker v-model="form.departure" :format="format" :min-date="min(form.arrival)" :max-date="max(form.arrival)" :disabled-dates="disabledDates"/>
                                 </div>
-                                <select v-model="form.location" class="border border-gray-200">
-                                    <option disabled value="">Please Confirm Location</option>
-                                    <option v-bind:value="rental.id">{{ rental.name }}</option>
-                                </select>
+                                <div>
+                                    <label class="font-bold">Please Confirm Rental</label><br>
+                                    <select v-model="form.location" class="border border-gray-200">
+                                        <option disabled value="">Please Confirm Location</option>
+                                        <option v-bind:value="rental.id">{{ rental.name }}</option>
+                                    </select>
+                                </div>
                                 <template v-if="errors.length > 0">
                                     <div class="bg-red-300 text-white rounded-lg p-6">
                                         <p v-for="error in errors" v-bind:key="error">{{ error }}</p>
@@ -89,13 +71,40 @@
                             </form>
                         </template>    
                         <template v-else>
-                            <div>
-                                <p class="pb-8 text-2xl">Please log in to reserve one of our rentals.</p>
+                        <div class="">
+                            <div class="">
+                                <p class="text-2xl pb-8">Log in to reserve</p>
                                 <RouterLink to="/login" class="flex justify-center mr-4 py-4 px-6 bg-orange-300 text-white font-bold rounded-lg">Log In</RouterLink>
                             </div>
+                        </div>
                         </template>
                     </div>
                 </div>
+            </div>
+            <div></div>
+            <div class="col-span-1"></div>
+            <div class="col-span-5">
+                <div class="">
+                    
+                    <p class="dynamic-text-size">{{ rental.address }} Charleston, SC, 29405</p>
+                    <p class="text-4xl py-3">${{ rental.price }} Per Night</p>
+                    <p class="text-2xl py-3">{{ rental.description }}</p>
+                </div> 
+                <div class="grid grid-cols-3 gap-3">
+                    <img v-bind:src="rental.get_profilePic" class="h-full w-full rounded-lg shadow-lg"/>
+                    <img v-bind:src="rental.get_roomPicOne" class="h-full w-full rounded-lg shadow-lg"/>
+                    <img v-bind:src="rental.get_roomPicTwo" class="h-full w-full rounded-lg shadow-lg"/>
+                    <img v-bind:src="rental.get_roomPicThree" class="h-full w-full rounded-lg shadow-lg"/>
+                    <img v-bind:src="rental.get_roomPicFour" class="h-full w-full rounded-lg shadow-lg"/>
+                    <img v-bind:src="rental.get_roomPicFive" class="h-full w-full rounded-lg shadow-lg"/>                
+                </div>
+            </div>
+            <div class="col-span-1">
+                    <template v-for="reservation in reservations" v-bind:key="reservation.id">
+                        {{ getDates(change(reservation.arrival), change(reservation.departure)) }}
+
+                    </template>
+                  
             </div>
         </div>   
     </div>
@@ -140,6 +149,37 @@ export default {
             }
         }
 
+        const min = (date) => {
+            const today = new Date();
+            const arr = new Date(date);
+            today.setDate(today.getDate() + 1)
+            arr.setDate(arr.getDate() + 1)
+
+            if (arr > today) {
+                return arr;
+            }
+            else {
+                return today;
+            }
+        }
+
+        const max = (date) => {
+            const arr = new Date(date)
+            const year = new Date()
+            year.setDate(year.getFullYear() + 1)
+            var max = new Date(year)
+            
+            for (let i = 0; i < disabledDates.length; i++) {
+                if (arr < disabledDates[i]) {
+                    if (disabledDates[i] < max) {
+                        max = disabledDates[i]
+                    }
+                }
+            }
+
+            return new Date(max)
+        }
+
         return {
             userStore,
             toastStore,
@@ -148,6 +188,8 @@ export default {
             change,
             getDates,
             disabledDates,
+            min,
+            max
         }
     },
 
@@ -202,7 +244,7 @@ export default {
                 .get('/api/reservations/list/')
                 .then(response => {
                     console.log('data', response.data)
-                    this.reservations = response.data.reservations.filter(data => data.isCancelled === false && data.location.id === `${this.$route.params.id}`)
+                    this.reservations = response.data.reservations.filter(data => data.isCancelled === false && (data.isCurrent === true || data.checkedIn === true) && data.location.id === `${this.$route.params.id}`)
                     console.log('res', this.reservations)
                 })
                 .catch(error => {
@@ -210,10 +252,17 @@ export default {
                 })
         },
 
+        retFormat(date) {
+            const dateObj = new Date(date);
+            const day = String(dateObj.getDate());
+            const month = String(dateObj.getMonth() + 1);
+            const year = String(dateObj.getFullYear());
+
+            return `${year}-${month}-${day}T05:00:01Z`
+        },
+
         submitForm() {
             this.errors = []
-            console.log('arrival', this.form.arrival)
-                            console.log('departure', this.form.departure)
 
             if (this.form.email === '') {
                 this.errors.push('e-mail is missing')
@@ -231,6 +280,10 @@ export default {
                 this.errors.push('location is missing')
             }
 
+            if (this.retFormat(this.form.arrival) >= this.retFormat(this.form.departure)) {
+                this.errors.push('arrival date cannot be after departure date')
+            }
+
             if (this.errors.length === 0) {
                 axios
                     .post(`/api/reservations/create/`, this.form)
@@ -241,9 +294,6 @@ export default {
                             this.form.arrival = ''
                             this.form.departure = ''
                             this.form.location = ''
-                            console.log('arrival', this.form.arrival)
-                            console.log('departure', this.form.departure)
-                            
                         } else {
                             const data = JSON.parse(response.data.message)
                             for (const key in data){

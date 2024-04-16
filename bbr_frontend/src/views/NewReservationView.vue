@@ -29,6 +29,8 @@
                         <label class="text-xl font-bold">Depature Date</label><br>
                         <VueDatePicker v-model="form.departure" :format="format"/>
                     </div>
+                    <p> {{ form.arrival }}</p>
+                    <p> {{ form.departure }}</p>  
 
                     <template v-if="errors.length > 0">
                         <div class="bg-red-300 text-white rounded-lg p-6">

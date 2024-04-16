@@ -1,0 +1,152 @@
+[
+    {
+      "model": "rentals.rental",
+      "pk": "03f7c71b-4970-4b6f-a6fc-ba3c17c0c429",
+      "fields": {
+        "name": "Oceanfront Villa",
+        "address": "123 Beachfront Avenue",
+        "description": "Experience luxury living at our oceanfront villa. Enjoy breathtaking views of the Atlantic Ocean right from your doorstep. This spacious villa offers modern amenities and direct beach access.",
+        "price": 300
+      }
+    },
+    {
+      "model": "rentals.rental",
+      "pk": "d2a3fa31-b2c7-49a2-8f2a-988a05e140f2",
+      "fields": {
+        "name": "Seaside Cottage",
+        "address": "456 Shoreline Drive",
+        "description": "Escape to our cozy seaside cottage nestled along the shoreline. Perfect for a romantic getaway or a small family vacation. Relax on the private deck overlooking the ocean.",
+        "price": 200
+      }
+    },
+    {
+      "model": "rentals.rental",
+      "pk": "78b4bf9a-9122-4e8b-8457-3a2a5292cc1e",
+      "fields": {
+        "name": "Beachfront Bungalow",
+        "address": "789 Oceanview Road",
+        "description": "Unwind at our charming beachfront bungalow, just steps away from the sandy shores. Ideal for those seeking a tranquil retreat by the sea. Enjoy stunning sunsets and gentle ocean breezes.",
+        "price": 250
+      }
+    },
+    {
+      "model": "rentals.rental",
+      "pk": "ad00b67b-f430-4a9e-89a2-3d3d35c05d33",
+      "fields": {
+        "name": "Sunset Haven",
+        "address": "101 Sunset Boulevard",
+        "description": "Discover serenity at Sunset Haven, a waterfront retreat with panoramic views of the sunset. Relax in our elegantly appointed rooms and indulge in beachside bliss.",
+        "price": 350
+      }
+    },
+    {
+      "model": "rentals.rental",
+      "pk": "3155e2a0-7b42-4ed0-b4dc-6c9a46f6248c",
+      "fields": {
+        "name": "Coastal Paradise",
+        "address": "222 Coastal Lane",
+        "description": "Immerse yourself in the beauty of Coastal Paradise, where azure waters meet pristine beaches. Experience the ultimate getaway in our luxurious beachfront accommodation.",
+        "price": 400
+      }
+    },
+    {
+      "model": "rentals.rental",
+      "pk": "ed8f20ac-7f32-47cf-93d3-7aeaf4a94bb5",
+      "fields": {
+        "name": "Sandy Retreat",
+        "address": "333 Seashore Street",
+        "description": "Escape to Sandy Retreat, a charming beachside escape perfect for families and friends. Enjoy endless days of sunshine, sandcastle building, and beachside picnics.",
+        "price": 180
+      }
+    },
+    {
+      "model": "rentals.rental",
+      "pk": "a3055278-c9f4-41b5-910e-3bb16b7ccf8e",
+      "fields": {
+        "name": "Oceanview Oasis",
+        "address": "444 Beachside Avenue",
+        "description": "Indulge in luxury at Oceanview Oasis, where every detail is designed to enhance your beachside experience. Relax in style and savor the stunning views of the ocean.",
+        "price": 500
+      }
+    },
+    {
+      "model": "rentals.rental",
+      "pk": "f312f4a2-77c2-49e0-b1c8-bf78942f8db4",
+      "fields": {
+        "name": "Secluded Seashell",
+        "address": "555 Seclusion Lane",
+        "description": "Find tranquility at Secluded Seashell, a hidden gem nestled along a secluded stretch of coastline. Immerse yourself in nature and rejuvenate your soul.",
+        "price": 220
+      }
+    },
+    {
+      "model": "rentals.rental",
+      "pk": "b1a8f77e-b7cd-4674-96f1-d5d0192874a1",
+      "fields": {
+        "name": "Beachside Breeze",
+        "address": "666 Breezy Beach Road",
+        "description": "Experience the refreshing Beachside Breeze, where gentle ocean breezes and endless horizons await. Unwind in our comfortable accommodations just steps from the shore.",
+        "price": 280
+      }
+    },
+    {
+      "model": "rentals.rental",
+      "pk": "893b1a8d-6d87-4c7c-8a5f-b22f7853d1ae",
+      "fields": {
+        "name": "Tropical Retreat",
+        "address": "777 Palm Tree Lane",
+        "description": "Escape to a Tropical Retreat surrounded by lush palm trees and pristine beaches. Immerse yourself in island-inspired decor and unwind in paradise.",
+        "price": 380
+      }
+    },
+    {
+      "model": "rentals.rental",
+      "pk": "20d2e2da-5415-4c65-a198-7b85f711066f",
+      "fields": {
+        "name": "Seascape Serenity",
+        "address": "888 Coastal View Drive",
+        "description": "Discover Seascape Serenity, where the rhythm of the waves soothes the soul. Embrace the coastal lifestyle in our serene beachfront accommodation.",
+        "price": 320
+      }
+    },
+    {
+      "model": "rentals.rental",
+      "pk": "9a9e7a33-fb45-4b92-b393-fc198dca7e14",
+      "fields": {
+        "name": "Surfside Sanctuary",
+        "address": "999 Surfing Lane",
+        "description": "Find sanctuary at Surfside Sanctuary, a beachfront haven perfect for surf enthusiasts and sun seekers alike. Experience the thrill of the waves and the beauty of the beach.",
+        "price": 260
+      }
+    },
+    {
+      "model": "rentals.rental",
+      "pk": "ae725597-374e-4485-923b-45873c8dfec4",
+      "fields": {
+        "name": "Beachfront Bliss",
+        "address": "111 Blissful Beach Boulevard",
+        "description": "Experience pure bliss at Beachfront Bliss, where the sun, sand, and sea converge to create the ultimate beach getaway. Relax in paradise and create lasting memories.",
+        "price": 450
+      }
+    },
+    {
+      "model": "rentals.rental",
+      "pk": "f6cb00a9-d4de-41f2-8a07-64b90e6f7ba8",
+      "fields": {
+        "name": "Coastal Haven",
+        "address": "222 Haven Avenue",
+        "description": "Escape to Coastal Haven, a tranquil retreat nestled along the coast. Immerse yourself in the beauty of nature and rejuvenate your mind, body, and soul.",
+        "price": 270
+      }
+    },
+    {
+      "model": "rentals.rental",
+      "pk": "4ad1205b-2d30-482f-b17f-dc0e4c7eb448",
+      "fields": {
+        "name": "Seaside Escape",
+        "address": "333 Escape Road",
+        "description": "Discover the beauty of Seaside Escape, where relaxation meets adventure. Explore pristine beaches, soak up the sun, and unwind in our cozy beachfront accommodation.",
+        "price": 240
+      }
+    }
+  ]

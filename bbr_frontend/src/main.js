@@ -11,7 +11,7 @@ import '@vuepic/vue-datepicker/dist/main.css'
 import Vue3EasyDataTable from 'vue3-easy-data-table';
 import 'vue3-easy-data-table/dist/style.css';
 
-axios.defaults.baseURL = 'http://127.0.0.1:8000'
+axios.defaults.baseURL = import.meta.env.VITE_API_URL
 
 const app = createApp(App)
 

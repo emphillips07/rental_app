@@ -1,72 +1,75 @@
 <template>
-    <div class="pt-20 max-w-7xl mx-auto grid grid-cols-2 gap-4">
-        <form class="space-y-6" v-on:submit.prevent="submitForm">
-            <div class="p-12">
-                <div class="p-2">
-                    <label>Name</label><br>
-                    <input type="text" v-model="form.name" placeholder= "name" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
-                </div>
+    <div class="bg-gray-200 h-[100vh]">
+        <div class="pt-8 flex justify-evenly mx-auto">
+            <div class="p-12 bg-white rounded-lg w-1/3 shadow-lg">
+                <form class="space-y-6" v-on:submit.prevent="submitForm">
+                    <div class="p-12">
+                        <div class="p-2">
+                            <label class="text-xl font-bold">Name</label><br>
+                            <input type="text" v-model="form.name" placeholder= "name" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
+                        </div>
 
-                <div class="p-2">
-                    <label>Address</label><br>
-                    <input type="text" v-model="form.address" placeholder="address" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
-                </div>
+                        <div class="p-2">
+                            <label class="text-xl font-bold">Address</label><br>
+                            <input type="text" v-model="form.address" placeholder="address" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
+                        </div>
 
-                <div class="p-2">
-                    <label>Description</label><br>
-                    <textarea v-model="form.description" placeholder="add a desription about the rental" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg"></textarea>
-                </div>
+                        <div class="p-2">
+                            <label class="text-xl font-bold">Description</label><br>
+                            <textarea v-model="form.description" placeholder="add a desription about the rental" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg"></textarea>
+                        </div>
 
-                <div class="p-2">
-                    <label>Price</label><br>
-                    <input type="number" v-model="form.price" placeholder="0.00" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
-                </div>
+                        <div class="p-2">
+                            <label class="text-xl font-bold">Price</label><br>
+                            <input type="number" v-model="form.price" placeholder="0.00" class="w-full mt-2 py-4 px-6 border border-gray-200 rounded-lg">
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <template v-if="errors.length > 0">
+                            <div class="bg-red-300 text-white rounded-lg p-6">
+                                <p v-for="error in errors" v-bind:key="error">{{ error }}</p>
+                            </div>
+                        </template>
+
+                        <div>
+                            <button class="py-4 px-6 bg-purple-600 text-white rounded-lg">Save Changes</button>
+                        </div>
+                    </div>
+                </form> 
             </div>
-            <div class="p-4">
-            <template v-if="errors.length > 0">
-                <div class="bg-red-300 text-white rounded-lg p-6">
-                    <p v-for="error in errors" v-bind:key="error">{{ error }}</p>
-                </div>
-            </template>
 
-            <div>
-                <button class="py-4 px-6 bg-purple-600 text-white rounded-lg">Save Changes</button>
-            </div>
+            <div class="p-12 bg-white rounded-lg shadow-lg">
+                <div class="py-4">
+                    <label class="text-xl font-bold">Profile Picture</label><br>
+                    <input type="file" ref="file">
+                </div>
+
+                <div class="py-4">
+                    <label class="text-xl font-bold">Room Picture One</label><br>
+                    <input type="file" ref="file1">
+                </div>
+
+                <div class="py-4">
+                    <label class="text-xl font-bold">Room Picture Two</label><br>
+                    <input type="file" ref="file2">
+                </div>
+
+                <div class="py-4">
+                    <label class="text-xl font-bold">Room Picture Three</label><br>
+                    <input type="file" ref="file3">
+                </div>
+
+                <div class="py-4">
+                    <label class="text-xl font-bold">Room Picture Four</label><br>
+                    <input type="file" ref="file4">
+                </div>
+
+                <div class="py-4">
+                    <label class="text-xl font-bold">Room Picture Five</label><br>
+                    <input type="file" ref="file5">
+                </div>
+            </div>   
         </div>
-    </form> 
-                
-        <div class="p-12">
-            <div class="py-4">
-                <label>Profile Picture</label><br>
-                <input type="file" ref="file">
-            </div>
-
-            <div class="py-4">
-                <label>Room Picture One</label><br>
-                <input type="file" ref="file1">
-            </div>
-
-            <div class="py-4">
-                <label>Room Picture Two</label><br>
-                <input type="file" ref="file2">
-            </div>
-
-            <div class="py-4">
-                <label>Room Picture Three</label><br>
-                <input type="file" ref="file3">
-            </div>
-
-            <div class="py-4">
-                <label>Room Picture Four</label><br>
-                <input type="file" ref="file4">
-            </div>
-
-            <div class="py-4">
-                <label>Room Picture Five</label><br>
-                <input type="file" ref="file5">
-            </div>
-        </div>
-            
     </div>
 </template>
 

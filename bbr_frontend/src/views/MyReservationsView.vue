@@ -5,10 +5,13 @@
                 <template #item-location="{ location }">
                     <RouterLink :to="{name: 'rentaldetails', params:{'id': location.id}}">{{ location.name }}</RouterLink>
                 </template>
-                <template #item-status="{ isCurrent, checkedIn }">
-                    <template template v-if="isCurrent == true && checkedIn != true">Upcoming</template>
-                    <template template v-else-if="isCurrent != true && checkedIn == true">Current</template>
-                    <template template v-else="isCurrent != true && checkedIn != true">Past</template>
+                <<template #item-status="{ isCurrent, checkedIn, isCancelled }">
+                    <template template v-if="isCancelled == true">Cancelled</template>
+                    <template template v-else>
+                        <template template v-if="isCurrent == true && checkedIn != true">Upcoming</template>
+                        <template template v-else-if="isCurrent != true && checkedIn == true">Current</template>
+                        <template template v-else="isCurrent != true && checkedIn != true">Past</template>
+                    </template>
                 </template>
                 <template #item-arrival="{ arrival }">
                     {{ formatDate(arrival) }}
@@ -16,7 +19,22 @@
                 <template #item-departure="{ departure }">
                     {{ formatDate(departure) }}
                 </template>
-            </EasyDataTable>            
+                <template #item-operation="{ id, isCurrent, checkedIn, isCancelled }">
+                        <div class="flex justify-end items-center">
+                            <div v-if="isCurrent == true && isCancelled != true" class="px-2">
+                                <RouterLink :to="{name: 'reservations_edit', params:{'id': id}}">
+                                    <img
+                                        src="../assets/edit.png"
+                                        class="w-10"
+                                    /></RouterLink>
+                            </div>
+                            <div v-if="isCurrent == true && checkedIn != true && isCancelled != true">
+                                <button @click="() => cancel(id)">    
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 24 24" fill="none" stroke="#FF0000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>                                </button>
+                            </div>                   
+                        </div>
+                    </template>
+            </EasyDataTable>          
         </div> 
     </div>
 </template>
@@ -42,6 +60,7 @@ export default {
                 { text: "Check In", value: "arrival"},
                 { text: "Check Out", value: "departure"},
                 { text: "Status", value: "status"},
+                { text: "", value: "operation"},
             ],
         }
     },
@@ -71,6 +90,18 @@ export default {
             const day = String(dateObj.getDate()).padStart(2, '0');
 
             return `${month}/${day}/${year}`;
+        },
+
+        cancel(pk) {
+            axios
+                .post(`api/reservations/${pk}/cancel`)
+                .then(response => {
+                    console.log('data', response.data)
+                    window.location.reload();
+                })
+                .catch(error => {
+                    console.log('error', error)
+                })
         },
     }
 }

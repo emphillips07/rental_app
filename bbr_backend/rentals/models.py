@@ -17,36 +17,36 @@ class Rental(models.Model):
     
     def get_profilePic(self):
         if self.profilePic:
-            return 'http://localhost:8000' + self.profilePic.url
+            return settings.WEBSITE_URL + self.profilePic.url
         else:
-             return 'http://localhost:8000/media/default.jpg'
+             return f'{settings.WEBSITE_URL}/media/default.jpg'
         
     def get_roomPicOne(self):
         if self.roomPicOne:
-            return 'http://localhost:8000' + self.roomPicOne.url
+            return f'{settings.WEBSITE_URL}' + self.roomPicOne.url
         else:
-             return 'http://localhost:8000/media/default.jpg'
+             return f'{settings.WEBSITE_URL}/media/default.jpg'
 
     def get_roomPicTwo(self):
         if self.roomPicTwo:
-            return 'http://localhost:8000' + self.roomPicTwo.url
+            return f'{settings.WEBSITE_URL}' + self.roomPicTwo.url
         else:
-             return 'http://localhost:8000/media/default.jpg'
+             return f'{settings.WEBSITE_URL}/media/default.jpg'
         
     def get_roomPicThree(self):
         if self.roomPicThree:
-            return 'http://localhost:8000' + self.roomPicThree.url
+            return f'{settings.WEBSITE_URL}' + self.roomPicThree.url
         else:
-             return 'http://localhost:8000/media/default.jpg'
+             return f'{settings.WEBSITE_URL}/media/default.jpg'
         
     def get_roomPicFour(self):
         if self.roomPicFour:
-            return 'http://localhost:8000' + self.roomPicFour.url
+            return f'{settings.WEBSITE_URL}' + self.roomPicFour.url
         else:
-             return 'http://localhost:8000/media/default.jpg'
+             return f'{settings.WEBSITE_URL}/media/default.jpg'
         
     def get_roomPicFive(self):
         if self.roomPicFive:
-            return 'http://localhost:8000' + self.roomPicFive.url
+            return f'{settings.WEBSITE_URL}' + self.roomPicFive.url
         else:
-             return 'http://localhost:8000/media/default.jpg'
+             return f'{settings.WEBSITE_URL}/media/default.jpg'

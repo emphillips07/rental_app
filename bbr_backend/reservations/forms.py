@@ -10,4 +10,4 @@ class ReservationForm(forms.ModelForm):
 class EditForm(forms.ModelForm):
     class Meta:
         model = Reservation
-        fields = ('arrival', 'departure',)
+        fields = ('arrival', 'departure')

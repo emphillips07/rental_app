@@ -1,0 +1,168 @@
+[
+    {
+        "model": "users.user",
+        "pk": "6f8cfd40-5791-4e85-aa24-98660f4ee94d",
+        "fields": {
+        "email": "user1@example.com",
+        "name": "John",
+        "last_name": "Doe",
+        "employee_title": "",
+        "level": 3
+        }
+  },
+  {
+    "model": "users.user",
+    "pk": "c2a7d919-e28f-4a45-8d56-ebc84e21bc5f",
+    "fields": {
+      "email": "user2@example.com",
+      "name": "Jane",
+      "last_name": "Smith",
+      "employee_title": "",
+      "level": 3
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "903b6aa1-53e4-4ff2-9e53-5e5e293d3585",
+    "fields": {
+      "email": "user3@example.com",
+      "name": "Mike",
+      "last_name": "Jackson",
+      "employee_title": "",
+      "level": 3
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "5a0e8a30-8619-4995-a1e8-cbe4402e7d5c",
+    "fields": {
+      "email": "user4@example.com",
+      "name": "Susan",
+      "last_name": "White",
+      "employee_title": "",
+      "level": 3
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "fb82a63c-c7e1-4cfb-95d0-4a0b89ad71e2",
+    "fields": {
+      "email": "user5@example.com",
+      "name": "Peter",
+      "last_name": "Williams",
+      "employee_title": "",
+      "level": 3
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "f6db1fc4-8d35-41f3-91e4-c324344c5d8a",
+    "fields": {
+      "email": "user6@example.com",
+      "name": "Lisa",
+      "last_name": "Brown",
+      "employee_title": "",
+      "level": 3
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "f7cf2464-4b40-45f0-8650-6ebe2da5b867",
+    "fields": {
+      "email": "user7@example.com",
+      "name": "Emily",
+      "last_name": "Thomas",
+      "employee_title": "",
+      "level": 3
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "a2c3e4dc-47e3-4ef5-86ec-10d85335e212",
+    "fields": {
+      "email": "user8@example.com",
+      "name": "Robert",
+      "last_name": "Miller",
+      "employee_title": "",
+      "level": 3
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "c2a7d919-e28f-4a45-8d56-ebc84e21bc5f",
+    "fields": {
+      "email": "john.doe@bbrentals.com",
+      "name": "John",
+      "last_name": "Doe",
+      "employee_title": "Manager",
+      "level": 1
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "903b6aa1-53e4-4ff2-9e53-5e5e293d3585",
+    "fields": {
+      "email": "jane.smith@bbrentals.com",
+      "name": "Jane",
+      "last_name": "Smith",
+      "employee_title": "Front Desk Assistant",
+      "level": 2
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "5a0e8a30-8619-4995-a1e8-cbe4402e7d5c",
+    "fields": {
+      "email": "mike.jackson@bbrentals.com",
+      "name": "Mike",
+      "last_name": "Jackson",
+      "employee_title": "Maintenance Technician",
+      "level": 2
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "fb82a63c-c7e1-4cfb-95d0-4a0b89ad71e2",
+    "fields": {
+      "email": "susan.white@bbrentals.com",
+      "name": "Susan",
+      "last_name": "White",
+      "employee_title": "Housekeeping Supervisor",
+      "level": 2
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "f6db1fc4-8d35-41f3-91e4-c324344c5d8a",
+    "fields": {
+      "email": "peter.williams@bbrentals.com",
+      "name": "Peter",
+      "last_name": "Williams",
+      "employee_title": "Beach Activity Coordinator",
+      "level": 2
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "f7cf2464-4b40-45f0-8650-6ebe2da5b867",
+    "fields": {
+      "email": "lisa.brown@bbrentals.com",
+      "name": "Lisa",
+      "last_name": "Brown",
+      "employee_title": "Marketing Specialist",
+      "level": 2
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "b8c3d4f2-6e98-4b54-9d0a-85b704a9433b",
+    "fields": {
+      "email": "emily.thomas@bbrentals.com",
+      "name": "Emily",
+      "last_name": "Thomas",
+      "employee_title": "Reservation Specialist",
+      "level": 2
+    }
+  }
+  
+  ]

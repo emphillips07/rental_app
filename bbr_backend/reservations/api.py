@@ -99,6 +99,19 @@ def changeStatus(request, pk):
     return JsonResponse({'message': 'Success'})
 
 @api_view(['POST'])
+def reservation_cancel(request, pk):
+    reservation = Reservation.objects.get(pk=pk)
+    
+    if reservation.isCurrent == True:
+        if reservation.checkedIn == False:
+            reservation.isCancelled = True
+            reservation.isCurrent = False
+
+    reservation.save()
+
+    return JsonResponse({'message': 'Success'})
+
+@api_view(['POST'])
 def reservation_edit(request, pk):
     reservation = Reservation.objects.get(pk=pk)
     
@@ -106,6 +119,8 @@ def reservation_edit(request, pk):
 
     if form.is_valid():
         form.save()
+    else:
+        return JsonResponse({'message': ':('})
 
     serializer = ReservationSerializer(reservation)
 

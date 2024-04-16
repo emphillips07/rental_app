@@ -1,0 +1,156 @@
+[
+  {
+    "model": "users.user",
+    "pk": "c2a7d919-e28f-4a45-8d56-ebc84e21bc5f",
+    "fields": {
+      "email": "john.doe@bbrentals.com",
+      "name": "John",
+      "last_name": "Doe",
+      "employee_title": "Manager",
+      "level": 1
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "903b6aa1-53e4-4ff2-9e53-5e5e293d3585",
+    "fields": {
+      "email": "jane.smith@bbrentals.com",
+      "name": "Jane",
+      "last_name": "Smith",
+      "employee_title": "Front Desk Assistant",
+      "level": 2
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "5a0e8a30-8619-4995-a1e8-cbe4402e7d5c",
+    "fields": {
+      "email": "mike.jackson@bbrentals.com",
+      "name": "Mike",
+      "last_name": "Jackson",
+      "employee_title": "Maintenance Technician",
+      "level": 2
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "fb82a63c-c7e1-4cfb-95d0-4a0b89ad71e2",
+    "fields": {
+      "email": "susan.white@bbrentals.com",
+      "name": "Susan",
+      "last_name": "White",
+      "employee_title": "Housekeeping Supervisor",
+      "level": 2
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "f6db1fc4-8d35-41f3-91e4-c324344c5d8a",
+    "fields": {
+      "email": "peter.williams@bbrentals.com",
+      "name": "Peter",
+      "last_name": "Williams",
+      "employee_title": "Beach Activity Coordinator",
+      "level": 2
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "f7cf2464-4b40-45f0-8650-6ebe2da5b867",
+    "fields": {
+      "email": "lisa.brown@bbrentals.com",
+      "name": "Lisa",
+      "last_name": "Brown",
+      "employee_title": "Marketing Specialist",
+      "level": 2
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "b8c3d4f2-6e98-4b54-9d0a-85b704a9433b",
+    "fields": {
+      "email": "emily.thomas@bbrentals.com",
+      "name": "Emily",
+      "last_name": "Thomas",
+      "employee_title": "Reservation Specialist",
+      "level": 2
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "b8c3d4f2-6e98-4b54-9d0a-85b704a9433b",
+    "fields": {
+      "email": "robert.miller@bbrentals.com",
+      "name": "Robert",
+      "last_name": "Miller",
+      "employee_title": "Security Guard",
+      "level": 1
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "4e5d3f2a-6d8c-4b7b-87fe-3d2e1b1c2a4b",
+    "fields": {
+      "email": "sarah.jones@bbrentals.com",
+      "name": "Sarah",
+      "last_name": "Jones",
+      "employee_title": "Housekeeping Assistant",
+      "level": 1
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "e4c5d6a7-8b9a-4c3d-9e2f-1a2b3c4d5e6f",
+    "fields": {
+      "email": "alex.martin@bbrentals.com",
+      "name": "Alex",
+      "last_name": "Martin",
+      "employee_title": "Maintenance Assistant",
+      "level": 1
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "f6a7b8c9-d1e2-4f3a-8b9c-5d6e7f8a9b0c",
+    "fields": {
+      "email": "megan.wilson@bbrentals.com",
+      "name": "Megan",
+      "last_name": "Wilson",
+      "employee_title": "Front Desk Clerk",
+      "level": 1
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "9d8c7b6a-e5f4-4d3c-8b2a-1f0e2d3c4b5a",
+    "fields": {
+      "email": "ryan.thompson@bbrentals.com",
+      "name": "Ryan",
+      "last_name": "Thompson",
+      "employee_title": "Beach Attendant",
+      "level": 2
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "2e3d4c5b-1a9b-4c8d-3e2f-5b6a7c8d9e0f",
+    "fields": {
+      "email": "olivia.miller@bbrentals.com",
+      "name": "Olivia",
+      "last_name": "Miller",
+      "employee_title": "Housekeeping Assistant",
+      "level": 1
+    }
+  },
+  {
+    "model": "users.user",
+    "pk": "6a7b8c9d-2e3f-4a5b-8c9d-1e2f3a4b5c6d",
+    "fields": {
+      "email": "chris.smith@bbrentals.com",
+      "name": "Chris",
+      "last_name": "Smith",
+      "employee_title": "Marketing Assistant",
+      "level": 1
+    }
+  }
+]
